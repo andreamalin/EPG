@@ -1,14 +1,18 @@
 .hours {
     display: flex;
     width: fit-content;
-    color: white;
+    color: black;
+    background-color: #D8E3E7;
 
     h1 {
-        text-align: center;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
         width: 150px;
         height: 50px;
         margin: 0;
         font-size: 1rem;
-        border-right: solid;
+        border-right: solid black;
     }
 }

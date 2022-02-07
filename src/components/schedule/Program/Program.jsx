@@ -6,6 +6,7 @@ const Program = ({ programInfo }) => {
   const [miliseconds, setMiliseconds] = useState(0)
 
   // Function to convert miliseconds to hours format
+  // eslint-disable-next-line no-unused-vars
   const convertMsToHM = (duration) => {
     let seconds = Math.floor((duration / 1000) % 60)
     let minutes = Math.floor((duration / (1000 * 60)) % 60)
@@ -36,7 +37,7 @@ const Program = ({ programInfo }) => {
 
   return (
     <div className="program" style={getProgramLength(miliseconds)}>
-      <h1>{convertMsToHM(miliseconds)}</h1>
+      {/* <h1>{convertMsToHM(miliseconds)}</h1> */}
       <h2>{programInfo.title}</h2>
     </div>
   )

@@ -4,9 +4,10 @@ import PropTypes from 'prop-types'
 import Program from './Program'
 import Hours from '../Hours/Hours'
 
-const Programs = ({ scheduleInfo }) => {
+const Programs = ({ scheduleInfo, setRef }) => {
   const completeSchedule = React.createRef()
   const [actualTime, setActualTime] = useState(0)
+  const [userInteraction, setUserInteraction] = useState(false)
 
   const getCurrentMinute = () => {
     // get complete date
@@ -20,17 +21,36 @@ const Programs = ({ scheduleInfo }) => {
   }
 
   const scrollRef = (actualMinute) => {
-    // every minute are 5 pixels
-    completeSchedule.current.scrollTo(actualMinute * 5, 0)
+    // Move scroll to actual minute
+    completeSchedule.current.scrollLeft = actualMinute
+  }
+
+  const goNow = () => {
+    // Move to actual time
+    setUserInteraction(false)
+    scrollRef(actualTime)
+  }
+
+  const goNext = () => {
+    // Move 30 min to the right
+    setUserInteraction(true)
+    completeSchedule.current.scrollLeft += 152
+  }
+
+  const goBack = () => {
+    // Move 30 min to the left
+    setUserInteraction(true)
+    completeSchedule.current.scrollLeft -= 152
   }
 
   useEffect(() => {
-    // Update the scrollbar when the current time changes
-    scrollRef(actualTime)
+    // Update the scrollbar when the current time changes and user is not interacting
+    if (!userInteraction) scrollRef(actualTime)
   }, [actualTime])
 
   useEffect(() => {
     if (completeSchedule.current) {
+      setRef(completeSchedule.current)
       // Get current time on minutes
       let actualMinute = getCurrentMinute()
       setActualTime(actualMinute)
@@ -50,16 +70,40 @@ const Programs = ({ scheduleInfo }) => {
   }, [])
 
   return (
-    <div className="programs-list" ref={completeSchedule}>
-      <div className="time-line" style={{ left: `${actualTime * 5.067}` }} />
-      <Hours />
-      { scheduleInfo?.map((channel) => (
-        <div className="programs-horizontal">
-          { channel.schedules.map((element) => (
-            <Program key={channel.id + element.start} programInfo={element} />
+    <div className="right-column">
+
+      <button className="left-arrow" onClick={() => goBack()} type="button">
+        <img src="https://img.icons8.com/nolan/64/circled-chevron-left--v3.png" alt="left-arrow" />
+      </button>
+
+      <div className="programs" ref={completeSchedule}>
+        <div className="time-line" style={{ left: `${actualTime * 5.067}` }} />
+
+        <Hours />
+        <div className="programs-list">
+          { scheduleInfo?.map((channel) => (
+            <div className="programs-horizontal">
+              { channel.schedules.map((element) => (
+                <Program key={channel.id + element.start} programInfo={element} />
+              ))}
+            </div>
           ))}
         </div>
-      ))}
+      </div>
+
+      <button className="right-arrow" onClick={() => goNext()} type="button">
+        <img src="https://img.icons8.com/nolan/64/circled-chevron-right--v3.png" alt="right-arrow" />
+      </button>
+
+      {
+        userInteraction
+          ? (
+            <button className="watch-now" onClick={() => goNow()} type="button">
+              <img src="https://img.icons8.com/external-bearicons-gradient-bearicons/64/000000/external-Now-miscellany-texts-and-badges-bearicons-gradient-bearicons.png" alt="Watch Now" />
+            </button>
+          )
+          : ''
+      }
     </div>
   )
 }
@@ -79,6 +123,11 @@ Programs.propTypes = {
       ),
     }),
   ).isRequired,
+  setRef: PropTypes.func,
+}
+
+Programs.defaultProps = {
+  setRef: () => {},
 }
 
 export default Programs
