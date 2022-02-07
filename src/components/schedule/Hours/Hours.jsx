@@ -6,8 +6,10 @@ const Hours = () => {
   const getScheduleHours = () => {
     const hours = []
     for (let i = 0; i < 24; i += 1) {
-      hours.push(`${i}:00`)
+      // starting the schedule on 0:30
       hours.push(`${i}:30`)
+      // if it is 24, then go back to 00:00, else continue adding one hour
+      if (i + 1 === 24) hours.push('00:00'); else hours.push(`${i + 1}:00`)
     }
     return hours
   }

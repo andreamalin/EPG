@@ -14,16 +14,10 @@ const Schedule = () => {
       },
     }).then((res) => res.json())
 
-    // eslint-disable-next-line no-console
     setScheduleInfo(json.channels)
-    // eslint-disable-next-line no-console
-    json.channels.map((item) => console.log(item))
-    // eslint-disable-next-line no-console
-    console.log(json.channels)
   }
 
   useEffect(() => {
-    // eslint-disable-next-line no-console
     fetchInfo()
   }, [])
 

@@ -5,9 +5,18 @@
     max-height: 430px;
     width: 80vw;
     max-width: 80vw;
+    position: relative;
     &::-webkit-scrollbar {
         display: none;
-    }    
+    }
+
+    .time-line {
+        position: absolute;
+        z-index: 1;
+        width: 10px;
+        height: 100vh;
+        background-color: red;
+    }
 
     .programs-horizontal {
         display: flex;
