@@ -1,0 +1,29 @@
+.schedule {
+    display: grid;
+    grid-template-columns: 0.5fr 2fr;
+
+    .right-column {
+        width: 80vw;
+        max-width: 80vw;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+
+        .right-arrow, .left-arrow {
+            width: 30px;
+            height: 30px;
+            background-position: center;
+            background-size: contain;
+            background-repeat: no-repeat;
+            margin: auto;
+        }
+    
+        .right-arrow {
+            background-image: url('https://img.icons8.com/dotty/80/000000/chevron-right.png');
+        }
+    
+        .left-arrow {
+            background-image: url('https://img.icons8.com/dotty/80/000000/chevron-left.png');
+        }
+    }
+}

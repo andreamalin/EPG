@@ -1,0 +1,27 @@
+.programs-list {
+    overflow: scroll;
+    display: flex;
+    flex-direction: column;
+    max-height: 430px;
+    width: 80vw;
+    max-width: 80vw;
+    &::-webkit-scrollbar {
+        display: none;
+    }    
+
+    .programs-horizontal {
+        display: flex;
+        width: fit-content;
+
+        .program {
+            border-right: solid;
+            height: 80px;
+            max-height: 80px;
+        
+            h1, h2 {
+                text-align: center;
+                font-size: 1rem;
+            }
+        }
+    }
+}
