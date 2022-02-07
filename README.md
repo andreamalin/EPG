@@ -14,7 +14,7 @@
 
 ***
 # Mobile
-<div display="flex">
+<div display="flex" align="center">
 <img src="https://user-images.githubusercontent.com/28350445/152842084-c5f4f501-f8b7-4743-bb13-d7ab725f8d27.png" height="800" />
 <img src="https://user-images.githubusercontent.com/28350445/152842206-0d510007-fd68-410a-ad1e-0c84463ee1ad.png" height="800" />
 </div>
