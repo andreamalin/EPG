@@ -74,24 +74,33 @@
 
                 .program {
                     display: flex;
+                    flex-direction: column;
                     align-items: center;
                     justify-content: center;
 
                     background-color: #52057B;
-                    height: 80px;
+                    border: 1px solid #52057B;
+                    height: 78px;
                     max-height: 80px;
                     color: #D8E3E7;
                 
-                    h1, h2 {
+                    h1 {
                         text-align: center;
                         font-size: 1rem;
+                        margin-bottom: 0;
+                    }
+
+                    h2 {
+                        text-align: center;
+                        font-size: 0.5rem;
                         font-weight: normal;
+                        margin-top: 0;
                     }
 
                     &:hover {
                         cursor: pointer;
                         box-shadow: 4px 3px 12px 1px rgba(0,0,0,0.65);
-                        background-color: #892CDC;
+                        border: 1px solid #BC6FF1;
                         color: white;
                     }
                 }

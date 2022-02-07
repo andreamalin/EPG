@@ -30,15 +30,16 @@ const Program = ({ programInfo }) => {
   const getProgramLength = (duration) => {
     const minutes = duration / 60000
     return {
-      width: `${minutes * 5}px`,
-      maxWidth: `${minutes * 5}px`,
+      width: `${minutes * 5 - 2}px`,
+      maxWidth: `${minutes * 5 - 2}px`,
     }
   }
 
   return (
     <div className="program" style={getProgramLength(miliseconds)}>
       {/* <h1>{convertMsToHM(miliseconds)}</h1> */}
-      <h2>{programInfo.title}</h2>
+      <h1>{programInfo.title}</h1>
+      <h2>{new Date(programInfo.start).toLocaleTimeString()}</h2>
     </div>
   )
 }

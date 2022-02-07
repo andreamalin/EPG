@@ -21,8 +21,16 @@ const Programs = ({ scheduleInfo, setRef }) => {
   }
 
   const scrollRef = (actualMinute) => {
-    // Move scroll to actual minute
-    completeSchedule.current.scrollLeft = actualMinute
+    if (actualMinute >= 1260) {
+      // Move scroll to end of actual minute after 9:00PM
+      completeSchedule.current.scrollLeft = actualMinute * 5
+    } else if (actualMinute >= 180) {
+      // Move scroll to actual minute after 3:00AM
+      completeSchedule.current.scrollLeft = actualMinute * 4
+    } else {
+      // First 3 hours are showed without scrolling
+      completeSchedule.current.scrollLeft = 0
+    }
   }
 
   const goNow = () => {
