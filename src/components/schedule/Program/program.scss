@@ -59,7 +59,7 @@
             z-index: 1;
             width: 5px;
             height: 100vh;
-            background-color: #BC6FF1;
+            background-color: #db9328;
         }
 
         .programs-list {
@@ -86,12 +86,18 @@
                     justify-content: center;
 
                     background-color: #52057B;
-                    border: 1px solid #52057B;
+                    border: 1px solid black;
                     height: 78px;
                     max-height: 80px;
                     color: #D8E3E7;
                 
+
                     h1 {
+                        width: 100%;
+                        text-overflow: ellipsis;
+                        overflow: hidden;
+                        white-space: nowrap;
+
                         text-align: center;
                         font-size: 1rem;
                         margin-bottom: 0;
