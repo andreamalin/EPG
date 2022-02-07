@@ -45,7 +45,7 @@ const Channels = ({ scheduleInfo, programsRef }) => {
       <div className="channels-list" ref={channelsList}>
         {
         scheduleInfo?.map((channel) => (
-          <Channel channelIcon={channel?.images?.logo} channelId={channel?.id} />
+          <Channel key={channel.id} channelIcon={channel?.images?.logo} channelId={channel?.id} />
         ))
       }
       </div>
@@ -66,7 +66,7 @@ Channels.propTypes = {
       }),
     }),
   ),
-  programsRef: PropTypes.element.isRequired,
+  programsRef: PropTypes.instanceOf(Element),
 }
 
 Channels.defaultProps = {
@@ -75,6 +75,7 @@ Channels.defaultProps = {
       logo: 'https://www.shareicon.net/data/512x512/2015/09/30/109354_media_512x512.png',
     },
   },
+  programsRef: document.getElementById('programs-list'),
 }
 
 export default Channels

@@ -109,9 +109,9 @@ const Programs = ({ scheduleInfo, setRef }) => {
         <Hours />
         <div className="programs-list">
           { scheduleInfo?.map((channel) => (
-            <>
+            <div className="programs-horizontal" key={channel.id + channel.title}>
               {resetFlag()}
-              <div className="programs-horizontal">
+              <>
                 { channel.schedules.map((element) => (
                   <Program
                     key={channel.id + element.start}
@@ -119,8 +119,8 @@ const Programs = ({ scheduleInfo, setRef }) => {
                     actualProgram={getProgramColor(element)}
                   />
                 ))}
-              </div>
-            </>
+              </>
+            </div>
           ))}
         </div>
       </div>
