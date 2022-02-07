@@ -4,22 +4,8 @@ import React, { useEffect, useState } from 'react'
 import PropTypes from 'prop-types'
 import './program.scss'
 
-const Program = ({ programInfo }) => {
+const Program = ({ programInfo, actualProgram }) => {
   const [miliseconds, setMiliseconds] = useState(0)
-
-  // Function to convert miliseconds to hours format
-  // eslint-disable-next-line no-unused-vars
-  const convertMsToHM = (duration) => {
-    let seconds = Math.floor((duration / 1000) % 60)
-    let minutes = Math.floor((duration / (1000 * 60)) % 60)
-    let hours = Math.floor((duration / (1000 * 60 * 60)) % 24)
-
-    hours = (hours < 10) ? `0${hours}` : hours
-    minutes = (minutes < 10) ? `0${minutes}` : minutes
-    seconds = (seconds < 10) ? `0${seconds}` : seconds
-
-    return `${hours}:${minutes}:${seconds}`
-  }
 
   // Function to substract the dates
   const substractDates = (endTime, startTime) => Math.abs(new Date(endTime) - new Date(startTime))
@@ -35,13 +21,13 @@ const Program = ({ programInfo }) => {
     return {
       width: `${minutes * 5 - 2}px`,
       maxWidth: `${minutes * 5 - 2}px`,
+      backgroundColor: actualProgram ? '#db9328' : '#52057B',
     }
   }
 
   return (
     <>
       <div className="program" style={getProgramLength(miliseconds)}>
-        {/* <h1>{convertMsToHM(miliseconds)}</h1> */}
         <h1>{programInfo.title}</h1>
         <h2>{new Date(programInfo.start).toLocaleTimeString()}</h2>
       </div>
@@ -56,6 +42,11 @@ Program.propTypes = {
     start: PropTypes.string.isRequired,
     end: PropTypes.string.isRequired,
   }).isRequired,
+  actualProgram: PropTypes.bool,
+}
+
+Program.defaultProps = {
+  actualProgram: false,
 }
 
 export default Program

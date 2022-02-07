@@ -8,6 +8,8 @@ const Programs = ({ scheduleInfo, setRef }) => {
   const completeSchedule = React.createRef()
   const [actualTime, setActualTime] = useState(0)
   const [userInteraction, setUserInteraction] = useState(false)
+  const [roundedDate, setRoundedDate] = useState('')
+  let firstTime = true
 
   const getCurrentMinute = () => {
     // get complete date
@@ -23,10 +25,10 @@ const Programs = ({ scheduleInfo, setRef }) => {
   const scrollRef = (actualMinute) => {
     if (actualMinute >= 1260) {
       // Move scroll to end of actual minute after 9:00PM
-      completeSchedule.current.scrollLeft = actualTime * 5.067
+      completeSchedule.current.scrollLeft = actualTime * 5
     } else if (actualMinute >= 180) {
       // Move scroll to actual minute after 3:00AM
-      completeSchedule.current.scrollLeft = actualTime * 5.067
+      completeSchedule.current.scrollLeft = actualTime * 5
       - completeSchedule.current.clientWidth / 2
     } else {
       // First 3 hours are showed without scrolling
@@ -52,6 +54,19 @@ const Programs = ({ scheduleInfo, setRef }) => {
     completeSchedule.current.scrollLeft -= 152
   }
 
+  // Flag used to only color one program by channel
+  const resetFlag = () => {
+    firstTime = true
+  }
+
+  const getProgramColor = (programInfo) => {
+    if (firstTime && new Date(programInfo.end) >= roundedDate) {
+      firstTime = false
+      return true
+    }
+    return false
+  }
+
   useEffect(() => {
     // Update the scrollbar when the current time changes and user is not interacting
     if (!userInteraction) scrollRef(actualTime)
@@ -63,6 +78,7 @@ const Programs = ({ scheduleInfo, setRef }) => {
       // Get current time on minutes
       let actualMinute = getCurrentMinute()
       setActualTime(actualMinute)
+      setRoundedDate(new Date())
 
       // Update timeline every minute
       setInterval(() => {
@@ -73,6 +89,8 @@ const Programs = ({ scheduleInfo, setRef }) => {
           // Else continue addding one minute on the timeline
           actualMinute += 1
         }
+        resetFlag()
+        setRoundedDate(new Date())
         setActualTime(actualMinute)
       }, 60 * 1000)
     }
@@ -86,16 +104,23 @@ const Programs = ({ scheduleInfo, setRef }) => {
       </button>
 
       <div className="programs" ref={completeSchedule}>
-        <div className="time-line" style={{ left: `${actualTime * 5.067}` }} />
+        <div className="time-line" style={{ left: `${actualTime * 5}` }} />
 
         <Hours />
         <div className="programs-list">
           { scheduleInfo?.map((channel) => (
-            <div className="programs-horizontal">
-              { channel.schedules.map((element) => (
-                <Program key={channel.id + element.start} programInfo={element} />
-              ))}
-            </div>
+            <>
+              {resetFlag()}
+              <div className="programs-horizontal">
+                { channel.schedules.map((element) => (
+                  <Program
+                    key={channel.id + element.start}
+                    programInfo={element}
+                    actualProgram={getProgramColor(element)}
+                  />
+                ))}
+              </div>
+            </>
           ))}
         </div>
       </div>

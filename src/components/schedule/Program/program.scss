@@ -57,9 +57,10 @@
         .time-line {
             position: absolute;
             z-index: 1;
-            width: 5px;
+            width: 3px;
+            top: 0;
             height: 100vh;
-            background-color: #db9328;
+            background-color: #52057B;
         }
 
         .programs-list {
