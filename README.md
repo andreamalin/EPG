@@ -8,15 +8,15 @@
 ***
 # Desktop
 <div align="center">
-<img src="https://user-images.githubusercontent.com/28350445/152841906-440025aa-c562-40d5-8f3c-de4fbb2009f6.png" width="800" />
-<img src="https://user-images.githubusercontent.com/28350445/152842283-4bfbbb45-115a-4ed7-b075-1d748b10e629.png" width="800" />
+<img src="https://user-images.githubusercontent.com/28350445/152855185-1be8ec2e-07c5-4372-8035-12a2842a374c.png" width="800" />
+<img src="https://user-images.githubusercontent.com/28350445/152855235-777f9cd9-8466-4d76-9bad-0255e478a3e9.png" width="800" />
 </div>
 
 ***
 # Mobile
 <div display="flex" align="center">
-<img src="https://user-images.githubusercontent.com/28350445/152842084-c5f4f501-f8b7-4743-bb13-d7ab725f8d27.png" height="800" />
-<img src="https://user-images.githubusercontent.com/28350445/152842206-0d510007-fd68-410a-ad1e-0c84463ee1ad.png" height="800" />
+<img src="https://user-images.githubusercontent.com/28350445/152855303-9a9c7c3f-9896-4b24-b7f0-969a933dc484.png" height="800" />
+<img src="https://user-images.githubusercontent.com/28350445/152855352-ab1fce4d-21f0-4d04-a7ed-9073e3af6cfd.png" height="800" />
 </div>
 
 ***
