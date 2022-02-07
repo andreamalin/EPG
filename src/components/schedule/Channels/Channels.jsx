@@ -5,18 +5,23 @@ import './channel.scss'
 
 const Channels = ({ scheduleInfo }) => (
   <div className="left-column">
-    <div className="up-arrow" />
+
+    <button className="up-arrow" onClick={() => {}} type="button">
+      <img src="https://img.icons8.com/nolan/64/circled-chevron-up--v3.png" alt="up-arrow" />
+    </button>
+
     <div className="channels-list">
       {
         // eslint-disable-next-line no-unused-vars
         scheduleInfo?.map((channel) => (
-          <Channel />
-        // <Channel channelIcon={channel?.images?.logo} />
+          <Channel channelIcon={channel?.images?.logo} channelId={channel?.id} />
         ))
       }
     </div>
 
-    <div className="down-arrow" />
+    <button className="down-arrow" onClick={() => {}} type="button">
+      <img src="https://img.icons8.com/nolan/64/circled-chevron-down--v3.png" alt="down-arrow" />
+    </button>
   </div>
 )
 

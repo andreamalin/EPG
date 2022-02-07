@@ -1,3 +1,10 @@
+body {
+    background-color: black;
+    display: flex;
+    margin: auto;
+    align-items: center;
+}
+
 .schedule {
     display: grid;
     grid-template-columns: 0.5fr 2fr;
@@ -8,22 +15,29 @@
         display: flex;
         flex-direction: row;
         justify-content: center;
+        background-color: black;
 
         .right-arrow, .left-arrow {
-            width: 30px;
-            height: 30px;
-            background-position: center;
-            background-size: contain;
-            background-repeat: no-repeat;
+            cursor: pointer;
+            display: flex;
             margin: auto;
-        }
+            border-radius: 100%;
+            width: 50px;
+            height: 50px;
+            outline: none;
+            padding: 0;
+            border: none;
+            background-color: black;
     
-        .right-arrow {
-            background-image: url('https://img.icons8.com/dotty/80/000000/chevron-right.png');
+            img {
+                margin: auto;
+                width: 50px;
+                height: 50px;
+            }
         }
-    
+
         .left-arrow {
-            background-image: url('https://img.icons8.com/dotty/80/000000/chevron-left.png');
+            margin-right: 20px;
         }
     }
 }

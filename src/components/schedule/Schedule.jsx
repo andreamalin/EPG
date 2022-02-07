@@ -26,9 +26,15 @@ const Schedule = () => {
       <Channels scheduleInfo={scheduleInfo} />
 
       <div className="right-column">
-        <div className="left-arrow" />
+
+        <button className="left-arrow" onClick={() => {}} type="button">
+          <img src="https://img.icons8.com/nolan/64/circled-chevron-left--v3.png" alt="left-arrow" />
+        </button>
         <Programs scheduleInfo={scheduleInfo} />
-        <div className="right-arrow" />
+
+        <button className="right-arrow" onClick={() => {}} type="button">
+          <img src="https://img.icons8.com/nolan/64/circled-chevron-right--v3.png" alt="right-arrow" />
+        </button>
       </div>
     </div>
   )

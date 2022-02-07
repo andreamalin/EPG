@@ -1,21 +1,18 @@
 .programs-list {
-    overflow: scroll;
+    overflow: hidden;
     display: flex;
     flex-direction: column;
     max-height: 430px;
     width: 80vw;
     max-width: 80vw;
     position: relative;
-    &::-webkit-scrollbar {
-        display: none;
-    }
 
     .time-line {
         position: absolute;
         z-index: 1;
-        width: 10px;
+        width: 5px;
         height: 100vh;
-        background-color: red;
+        background-color: #BC6FF1;
     }
 
     .programs-horizontal {
@@ -23,13 +20,20 @@
         width: fit-content;
 
         .program {
-            border-right: solid;
+            background-color: #52057B;
             height: 80px;
             max-height: 80px;
+            color: white;
         
             h1, h2 {
                 text-align: center;
                 font-size: 1rem;
+            }
+
+            &:hover {
+                cursor: pointer;
+                box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+                background-color: #892CDC;
             }
         }
     }
