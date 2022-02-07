@@ -7,6 +7,17 @@ body {
     font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
+.banner {
+    font-size: 2rem;
+    color: white;
+
+    .date {
+        color: #BC6FF1;
+        margin: 1% 0;
+        font-size: 3rem;
+    }
+}
+
 .schedule {
     display: grid;
     grid-template-columns: 0fr 2fr;

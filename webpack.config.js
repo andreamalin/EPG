@@ -33,6 +33,7 @@ module.exports = {
     port: 3000,
   },
   plugins: [new HtmlWebpackPlugin({
+    favicon: './src/favicon.png',
     templateContent:
     `<html>
       <meta content="width=device-width, initial-scale=1" name="viewport" />
