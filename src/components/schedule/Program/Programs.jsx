@@ -2,13 +2,16 @@
 import React, { useEffect, useState } from 'react'
 import PropTypes from 'prop-types'
 import Program from './Program'
+import { returnAPIContext } from '../../ApiContext'
 import Hours from '../Hours/Hours'
 
-const Programs = ({ scheduleInfo, setRef }) => {
+const Programs = ({ setRef }) => {
   const completeSchedule = React.createRef()
   const [actualTime, setActualTime] = useState(0)
   const [userInteraction, setUserInteraction] = useState(false)
   const [roundedDate, setRoundedDate] = useState('')
+  const scheduleInfo = returnAPIContext()
+
   let firstTime = true
 
   const getCurrentMinute = () => {
@@ -143,20 +146,6 @@ const Programs = ({ scheduleInfo, setRef }) => {
 }
 
 Programs.propTypes = {
-  scheduleInfo: PropTypes.arrayOf(
-    PropTypes.shape({
-      id: PropTypes.string.isRequired,
-      title: PropTypes.string.isRequired,
-      schedules: PropTypes.arrayOf(
-        PropTypes.shape({
-          id: PropTypes.string.isRequired,
-          title: PropTypes.string.isRequired,
-          start: PropTypes.string.isRequired,
-          end: PropTypes.string.isRequired,
-        }),
-      ),
-    }),
-  ).isRequired,
   setRef: PropTypes.func,
 }
 

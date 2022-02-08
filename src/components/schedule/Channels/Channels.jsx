@@ -2,11 +2,13 @@
 import React, { useState } from 'react'
 import PropTypes from 'prop-types'
 import Channel from './Channel'
+import { returnAPIContext } from '../../ApiContext'
 import './channel.scss'
 
-const Channels = ({ scheduleInfo, programsRef }) => {
+const Channels = ({ programsRef }) => {
   const channelsList = React.useRef()
   const [actualChannel, setActualChannel] = useState(1)
+  const scheduleInfo = returnAPIContext()
 
   const goNext = () => {
     // Showing 5 channels on screen
@@ -58,23 +60,10 @@ const Channels = ({ scheduleInfo, programsRef }) => {
 }
 
 Channels.propTypes = {
-  scheduleInfo: PropTypes.arrayOf(
-    PropTypes.shape({
-      id: PropTypes.string.isRequired,
-      images: PropTypes.shape({
-        logo: PropTypes.string,
-      }),
-    }),
-  ),
   programsRef: PropTypes.instanceOf(Element),
 }
 
 Channels.defaultProps = {
-  scheduleInfo: {
-    images: {
-      logo: 'https://www.shareicon.net/data/512x512/2015/09/30/109354_media_512x512.png',
-    },
-  },
   programsRef: document.getElementById('programs-list'),
 }
 
